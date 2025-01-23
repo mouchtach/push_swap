@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "read.h"
+#include "push_swap.h"
 
 static char	**freep(char **p, size_t size)
 {

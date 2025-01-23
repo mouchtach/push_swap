@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "read.h"
+#include "push_swap.h"
 
 char	*ft_strdup(const char *s)
 {
