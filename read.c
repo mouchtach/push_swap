@@ -38,20 +38,18 @@ int ft_sort(int **tab)
     return (1);
 }
 
-int **intab(char **str)
+int **intab(char **str, int *count)
 {
     int i = 0;
     int res = 0;
-    int count = 0;
     int **tab = NULL;
 
-    while (str[count])
-        count++;
-    // printf("count = %d\n", count);
-    tab = (int **)malloc(sizeof(int *) * (count + 1));
+    while (str[*count])
+        *count += 1; 
+    tab = (int **)malloc(sizeof(int *) * (*count + 1));
     if (!tab) 
         return NULL;
-    while ( i < count) 
+    while ( i < *count) 
     {
         tab[i] = malloc(sizeof(int));
         res = ft_atoi(str[i]);
@@ -69,16 +67,13 @@ int ft_check(char *str)
     while (str[i])
     {   
         if (!((str[i] >= '0' && str[i] <= '9') || (str[i] == '-' || str[i] == '+') || (str[i] == ' ')))
-            // printf("i = %d / \033[1;31m1\033[0m\n", i);
             return (1);
         if(i == 0 && (str[i] == '-' || str[i] == '+') && !(str[i + 1] >= '0' && str[i + 1] <= '9'))
             return (1);
-            // printf("i = %d / \033[1;31m2\033[0m\n", i);
         if(i > 0 && (str[i] == '-' || str[i] == '+'))
         {   
             if(!(str[i + 1] >= '0' && str[i + 1] <= '9') || str[i - 1] != ' ')
             return (1);
-            // printf("i = %d / \033[1;31m3\033[0m\n", i);
         }
         i++;
     }
@@ -117,17 +112,37 @@ char *input(int c, char **v)
 }   
 
 
+void ft_print(t_list *list_a, t_list *list_b)
+{
+    printf("\033[1;32mList A\033[0m\n");
+    while (list_a != NULL)
+    {
+        printf("\033[1;32m%d\033[0m\n", list_a->data);
+        list_a = list_a->next;
+    }
+    printf("\033[1;32mList B\033[0m\n");
+    while (list_b != NULL)
+    {
+        printf("\033[1;32m%d\033[0m\n", list_b->data);
+        list_b = list_b->next;
+    }
+
+}
 int main(int argc, char **argv)
 {
     int i = 0;
+    t_list *list_a;
+    t_list *list_b;
+    int count = 0;
     char *strjoin = NULL;
     int **tab = NULL;
 
     strjoin = input(argc, argv);
     if(strjoin == NULL)
         return (0);
-    tab = intab(ft_split(strjoin, ' '));
+    tab = intab(ft_split(strjoin, ' '), &count);
     free(strjoin);
+    printf("count = %d\n", count);
     if (ft_double(tab) == 1)
     {
         printf("\n\033[1;31mERROR DOUBLE\033[0m\n\n");
@@ -138,12 +153,13 @@ int main(int argc, char **argv)
         printf("\n\033[1;32mS O R T E D\033[0m\n\n");
         return (0);
     }
-    while (tab[i])
-    {
-        printf("\033[1;32m%d\033[0m\n", *tab[i]);
-        i++;
-    }
+    list_a = ft_list_input(tab, count);
+    ft_print(list_a, list_b);
+    list_b = ft_push_b(list_a, list_b);
+    ft_print(list_a, list_b);
 
-    // printf("\033[1;32m%s\033[0m\n", strjoin);
+    
+
+
 
 }

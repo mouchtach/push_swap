@@ -1,6 +1,7 @@
 NAME = read.a
 SOURCES = \
-	ft_split.c ft_substr.c ft_strjoin.c ft_strlen.c ft_strdup.c ft_atoi.c
+	ft_split.c ft_substr.c ft_strjoin.c ft_strlen.c ft_strdup.c ft_atoi.c list.c \
+	ft_add_back.c ft_add_last.c ft_new.c operations.c
 
 OBJECTS = $(SOURCES:.c=.o)
 AR = ar rcs
@@ -18,4 +19,4 @@ clean:
 	rm -rf $(OBJECTS) $(BOBJECTS)
 fclean: clean
 	rm -rf $(NAME)
-re: fclean all
+re: fclean all 
