@@ -1,11 +1,7 @@
-
 #include "push_swap.h"
 #include "./libft/libft.h"
-#include <stdio.h>
-#include <stdlib.h>
 
-
-int ft_double(int **tab)
+int if_double_sort(int **tab)
 {
     int i = 0;
     int j = 0;
@@ -21,20 +17,12 @@ int ft_double(int **tab)
         }
         i++;
     }
-    return (0);
-}
-int ft_sort(int **tab)
-{
-    int i = 0;
-    int j = 0;
-    int tmp = 0;
-
+    i = 0;
     while (tab[i] && tab[i + 1])
     {
-        if(*tab[i] < *tab[i + 1])
-            i++;
-        else
+        if((*tab[i] > *tab[i + 1]))
             return (0);
+        i++;
     }
     return (1);
 }
@@ -50,10 +38,14 @@ int **intab(char **str, int *count)
     tab = (int **)malloc(sizeof(int *) * (*count + 1));
     if (!tab) 
         return NULL;
-    while ( i < *count) 
+    while (i < *count) 
     {
         tab[i] = malloc(sizeof(int));
+        if (!tab[i])
+            return (free_stack_number(&tab), NULL);
         res = ft_atoi(str[i]);
+        if(res == 0)
+            return (free_stack_number(&tab), NULL);
         *tab[i] = res ;
         i++;
     }
@@ -113,22 +105,7 @@ char *input(int c, char **v)
 }   
 
 
-void ft_print(t_list *list_a, t_list *list_b)
-{
-    printf("\033[1;32mList A\033[0m\n");
-    while (list_a != NULL)
-    {
-        printf("\033[1;32m%d\033[0m\n", list_a->data);
-        list_a = list_a->next;
-    }
-    printf("\033[1;32mList B\033[0m\n");
-    while (list_b != NULL)
-    {
-        printf("\033[1;32m%d\033[0m\n", list_b->data);
-        list_b = list_b->next;
-    }
 
-}
 
 void    ft_print_stacks(t_list *stack_a, t_list *stack_b)
 {
@@ -157,39 +134,21 @@ void    ft_print_stacks(t_list *stack_a, t_list *stack_b)
         stack_b = stack_b->next;
     }
 }
-int main(int argc, char **argv)
+int **number_arg(int argc, char **argv)
 {
-    int i = 0;
-    t_list *list_a;
-    t_list *list_b;
     int count = 0;
     char *strjoin = NULL;
     int **tab = NULL;
+    char **str = NULL;
 
     strjoin = input(argc, argv);
     if(strjoin == NULL)
         return (0);
-    tab = intab(ft_split(strjoin, ' '), &count);
+    str = ft_split(strjoin, ' ');
+    tab = intab(str, &count);
+    free_stack_string(str);
     free(strjoin);
-    printf("count = %d\n", count);
-    if (ft_double(tab) == 1)
-    {
-        printf("\n\033[1;31mERROR DOUBLE\033[0m\n\n");
-        return (0);
-    }
-    if (ft_sort(tab) == 1)
-    {
-        printf("\n\033[1;32mS O R T E D\033[0m\n\n");
-        return (0);
-    }
-    list_a = ft_list_input(tab, count);
-    ft_print_stacks(list_a, list_b);
-    ft_push_b(&list_a, &list_b);
-    ft_push_b(&list_a, &list_b);
-    ft_print_stacks(list_a, list_b);
-
-    
-
-
-
+    if (if_double_sort(tab) == 1)
+        return (printf("\n\033[1;31mERROR\033[0m\n\n"), NULL);
+    return (tab);
 }
