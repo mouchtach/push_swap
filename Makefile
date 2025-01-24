@@ -1,7 +1,11 @@
 NAME = push_swap.a
+LIBFT = ./libft/libft.a
 SOURCES = \
-	ft_split.c ft_substr.c ft_strjoin.c ft_strlen.c ft_strdup.c ft_atoi.c list.c \
-	ft_add_back.c ft_add_last.c ft_new.c operations.c
+	./linkedlist/ft_add_back.c \
+	./linkedlist/ft_add_last.c \
+	./linkedlist/ft_new.c \
+	./linkedlist/creat_list.c \
+	./operations/operations.c \
 
 OBJECTS = $(SOURCES:.c=.o)
 AR = ar rcs
@@ -10,7 +14,10 @@ CFLAGS = -Wall -Wextra -Werror
 
 exe: all 
 	@make clean
-	@gcc read.c push_swap.a -o push_swap
+	@gcc read.c push_swap.a  $(LIBFT) -o push_swap
+
+$(LIBFT):
+	@make -C ./libft
 
 all: $(NAME)
 

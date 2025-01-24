@@ -70,15 +70,13 @@ int main() {
     while (head)
     {
         if(head->prev != NULL)
-            printf("data dyal li 9bal %d\n", head->prev->data);
+            printf("data dyal li 9bal %p\n", head->prev);
         printf("data dyali%d\n", head->data);
         head = head->next;
     }
-    while(head->prev != NULL)
-    {
-        printf("data dyal li 9bal %d\n", head->data);
-        head = head->prev;
-    }
+    printf("data  null = %p\n", head->next);
+        
+    
     
     // // tmmp = tmmp->next;
     // while ( tmmp->prev != NULL && tmmp)

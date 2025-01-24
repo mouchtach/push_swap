@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 15:23:20 by ymouchta          #+#    #+#             */
-/*   Updated: 2024/10/30 15:23:20 by ymouchta         ###   ########.fr       */
+/*   Created: 2024/10/24 10:04:39 by ymouchta          #+#    #+#             */
+/*   Updated: 2024/10/24 17:01:20 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef LIBFT_H
+# define LIBFT_H
 
-char	*ft_strdup(const char *s)
-{
-	size_t	i;
-	char	*p;
-	
-	if(!s)
-		return (NULL);
+# include <stdlib.h>
 
-	i = 0;
-	p = (char *)malloc(ft_strlen(s) + 1);
-	if (!p)
-		return (NULL);
-	while (s[i])
-	{
-		p[i] = s[i];
-		i++;
-	}
-	p[i] = '\0';
-	return (p);
-}
+int	ft_atoi(const char *str);
+char	**ft_split(char const *s, char c);
+char	*ft_strdup(const char *s);
+char	*ft_strjoin(char const *s1, char const *s2);
+size_t	ft_strlen(const char *s);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+
+
+
+#endif

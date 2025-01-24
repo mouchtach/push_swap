@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void ft_push_b(t_list **list_a, t_list **list_b)
 {
