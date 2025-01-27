@@ -1,5 +1,5 @@
 #include "push_swap.h"
-#include "./libft/libft.h"
+#include "libft/libft.h"
 
 
 void free_stack_number(int ***tab)

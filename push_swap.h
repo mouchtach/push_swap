@@ -12,10 +12,21 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-int **number_arg(int argc, char **argv);
+int		**number_arg(int argc, char **argv, int *count);
 void	ft_lstclear(t_list **lst);
+void    ft_print_stacks(t_list *stack_a, t_list *stack_b);
 
+// operations
+void    ft_ss_swap(t_list **list_a,  t_list **list_b);
 void 	ft_push_b(t_list **list_a, t_list **list_b);
+void	ft_push_a(t_list **list_a, t_list **list_b);
+void	ft_swap(t_list **list);
+void	ft_rotate(t_list **list);
+void	ft_rerotate(t_list **list);
+void    ft_rr_rotate(t_list **list_a, t_list **list_b);
+void    ft_rr_rerotate(t_list **list_a, t_list **list_b);
+
+//
 t_list	*ft_lstlast(t_list *lst);
 t_list *ft_list_input(int **input, int count);
 t_list	*ft_lstnew(int content);

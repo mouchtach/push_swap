@@ -11,10 +11,10 @@ all: $(NAME)
 	@make clean
 
 $(NAME): $(OBJECTS)
-	@$(AR) $@ $^
+	$(AR) $@ $^
 
 %.o: %.c libft.h
-	@$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 clean:
 	@rm -rf $(OBJECTS) $(BOBJECTS)
 fclean: clean

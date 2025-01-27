@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 
-int	ft_atoi(const char *str);
+int	    ft_atoi(const char *str);
 char	**ft_split(char const *s, char c);
 char	*ft_strdup(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);
