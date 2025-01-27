@@ -84,7 +84,7 @@ char *input(int c, char **v)
         {
             if(ft_check(v[i]) == 1)
             {
-                printf("\n\033[1;31mERROR SANTAX\033[0m\n\n");
+                printf("\n\033[1;31mERROR\033[0m\n\n");
                 exit(0);
             }
             tmp = ft_strdup(str);
@@ -116,6 +116,8 @@ int **number_arg(int argc, char **argv, int *count)
     if(strjoin == NULL)
         return (0);
     str = ft_split(strjoin, ' ');
+    if (!str)
+        return(free(strjoin), NULL);
     tab = intab(str, &count);
     free_stack_string(str);
     free(strjoin);

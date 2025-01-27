@@ -8,6 +8,7 @@ SOURCES = \
 	linkedlist/ft_new.c \
 	linkedlist/creat_list.c \
 	linkedlist/ft_lstclear.c \
+	linkedlist/ft_lstsize.c \
 	operations/push.c \
 	operations/rotate.c \
 	operations/swap.c \
