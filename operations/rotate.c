@@ -16,14 +16,14 @@ void ft_rotate(t_list **list)
         temp = temp->next;
     temp->next = first;
 
-    write(1, "ra ; ", 5);
+    write(1, "ra \n", 4);
 }
 
 void ft_rr_rotate(t_list **list_a, t_list **list_b)
 {
     ft_rotate(list_a);
     ft_rotate(list_b);
-    write(1, "rrr ; ", 6);
+    write(1, "rrr \n", 5);
 }
 
 void ft_rerotate(t_list **list)
@@ -47,12 +47,12 @@ void ft_rerotate(t_list **list)
     last->next = first;
     *list = last;
 
-    write(1, "rra ; ", 6);
+    write(1, "rra \n", 5);
 }
 
 void ft_rr_rerotate(t_list **list_a, t_list **list_b)
 {
     ft_rerotate(list_a);
     ft_rerotate(list_b);
-    write(1, "rr ; ", 5);
+    write(1, "rr \n", 4);
 }

@@ -1,5 +1,5 @@
 #include "push_swap.h"
-#include "libft/libft.h"
+
 
 int if_double_sort(int **tab)
 {

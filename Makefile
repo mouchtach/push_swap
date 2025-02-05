@@ -3,6 +3,7 @@ LIBFT = libft/libft.a
 SOURCES = \
 	input.c \
 	free.c \
+	sort_th.c \
 	linkedlist/ft_add_back.c \
 	linkedlist/ft_add_last.c \
 	linkedlist/ft_new.c \
@@ -20,10 +21,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 exe: all 
-	make clean
 	gcc push_swap.c push_swap.a  $(LIBFT) -o push_swap
-	make clean
-
 
 all: $(NAME) $(LIBFT)
 

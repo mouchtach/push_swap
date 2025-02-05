@@ -16,10 +16,12 @@ void ft_swap(t_list **list)
     *list = second;
     second->next = first;
     first->next = third;
+    write(1, "sa \n", 4);
 }
 
 void ft_ss_swap(t_list **list_a, t_list **list_b)
 {
     ft_swap(list_a);
     ft_swap(list_b);
+    write(1, "ss \n", 4);
 }
