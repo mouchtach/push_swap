@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 23:05:22 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/08 23:30:14 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/08 23:47:14 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,9 @@ void   ft_sort_if_tive(t_list **lst_a, t_list **lst_b, int count)
     else if (count == 5)
         ft_sort_five(lst_a, lst_b);
     else
+    {
+        ft_free_stack(lst_b);
+        ft_free_stack(lst_a);
         return ;
+    }
 }

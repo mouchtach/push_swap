@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 23:00:02 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/08 23:31:53 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/08 23:46:23 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ int main(int argc, char **argv)
     if (!stack_a)
         return (ft_free_int(&int_argv), ft_free_int(&int_sorted), 1); 
     if (count <= 5)
-        ft_sort_if_tive(&stack_a, &stack_b, count);
+        ft_sort_5(&stack_a, &stack_b, count);
     else
     {
         ft_push_if(&stack_a, &stack_b, count);
