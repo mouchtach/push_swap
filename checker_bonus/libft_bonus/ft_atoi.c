@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 18:19:49 by ymouchta          #+#    #+#             */
-/*   Updated: 2024/10/30 18:19:49 by ymouchta         ###   ########.fr       */
+/*   Created: 2024/10/25 09:46:15 by ymouchta          #+#    #+#             */
+/*   Updated: 2024/10/25 11:51:13 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../push_swap_bonus.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+int	ft_atoi(const char *str)
 {
-	char	*p;
-	size_t	i;
-	size_t	stlen;
+	int			i;
+	int			x;
+	long long	t;
 
 	i = 0;
-	if (!s)
-		return (NULL);
-	stlen = ft_strlen(s);
-	if (start >= stlen)
-		return (ft_strdup(""));
-	if (len > stlen - start)
-		len = stlen - start;
-	p = (char *)malloc(len + 1);
-	if (!p)
-		return (NULL);
-	while (i < len && s[start + i])
+	x = 1;
+	t = 0;
+	while ((str[i] <= 13 && str[i] >= 9) || str[i] == 32)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		p[i] = s[start + i];
+		if (str[i] == '-')
+			x = -x;
 		i++;
 	}
-	p[i] = '\0';
-	return (p);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		t = (t * 10) + (str[i] - 48);
+		if ((t * x) > INT_MAX ||(t * x) < INT_MIN)
+			return (0);
+		i++;
+	}
+	return ((int)(t * x));
 }

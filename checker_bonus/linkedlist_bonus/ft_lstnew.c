@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_back.c                                      :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 19:20:53 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/08 15:12:43 by ymouchta         ###   ########.fr       */
+/*   Created: 2024/11/12 12:50:40 by ymouchta          #+#    #+#             */
+/*   Updated: 2025/02/07 19:25:54 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../push_swap_bonus.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+t_list	*ft_lstnew(int content)
 {
-	t_list	*last;
+	t_list	*element;
 
-	if (!lst || !new)
-		return ;
-	if (!*lst)
-	{
-		*lst = new;
-		return ;
-	}
-	if (new && lst)
-	{
-		last = ft_lstlast(*lst);
-		last -> next = new;
-	}
+	element = malloc(sizeof(t_list));
+	if (!element)
+		return (NULL);
+	element->data = content;
+	element->next = NULL;
+	return (element);
 }

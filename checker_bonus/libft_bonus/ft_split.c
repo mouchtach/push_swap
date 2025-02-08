@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../push_swap_bonus.h"
 
 
 static char	**freep(char **p, size_t size)
@@ -66,25 +66,20 @@ static char	**pcpy(const char *s, char **p, char c, size_t x)
 	return (p);
 }
 
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-    char **p;
-	char **result;
-    size_t count;
+	char	**p;
+	size_t	count;
 
-    if (!s)
-        return (NULL);
-    count = countwords(s, c);
-    p = (char **)malloc(sizeof(char *) * (count + 1));
-    if (!p)
-        return (NULL);
-    result = pcpy(s, p, c, count);
-    if (!result)
-    {
-        free(p);
-        return (NULL);
-    }
-    return (result);
+	if (!s)
+		return (NULL);
+	count = countwords(s, c);
+	p = (char **)malloc(sizeof(char *) * (count + 1));
+	if (!p)
+		return (NULL);
+	p = pcpy(s, p, c, count);
+	if (!p)
+		return (NULL);
+	return (p);
 }
-
 

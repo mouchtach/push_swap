@@ -1,307 +1,141 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/08 23:00:02 by ymouchta          #+#    #+#             */
+/*   Updated: 2025/02/08 23:31:53 by ymouchta         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft/libft.h"
 
-// void finsh_target(t_list **list_a, t_list **list_b, int index)
-// {
-//     t_list *a;
-//     int i;
-//     i = 0;
-
-//     a = *list_a; 
-//     if(index == 0)
-//     {
-//         ft_push_a(list_a, list_b);
-//         return;
-//     }
-//     if(index < (ft_lstsize(*list_a) / 2))
-//     {
-//         while (i < index)
-//         {
-//             ft_rotate(list_a);
-//             i++;
-//         }
-//     }
-//     else
-//     {
-//         i = (ft_lstsize(*list_a) - index) + 1;
-//         while (i--)
-//         {
-//             ft_rerotate(list_a);
-//         }
-//     }
-//     ft_push_a(list_a, list_b);
-// }
-int ft_min(t_list *list)
+void finish_sort(t_list **stack_a, t_list **stack_b)
 {
-    t_list *tmp;
-    int min;
-    int i = 0;
+    int max;
+    int count;
 
-    tmp = list;
-    min = list->data;
-    while (list)
+    count = ft_lstsize(*stack_b);
+    while (count > 0)
     {
-        if (list->data < min)
-            min = list->data;
-        list = list->next;
+        max = get_max_stack(*stack_b);
+        ft_move_node_b_to_top(stack_b, max);
+        pa(stack_a, stack_b);
+        count--;
     }
-    while (tmp)
-    {
-        if (tmp->data == min)
-            break;
-        tmp = tmp->next;
-        i++;
-    }
-    return i;
+    ft_free_stack(stack_b);
+    ft_free_stack(stack_a);
 }
 
-
-void sort_list(t_list **list, int min)
+void ft_push_if_range(t_list **stack_a, t_list **stack_b, int big, int count)
 {
-    if(min == 0)
-        return;
-    else if(min < (ft_lstsize(*list) / 2))
-    {
-        while(min--)
-            ft_rotate(list);
-    }
-    else
-    {
-        min = (ft_lstsize(*list) - min);
-        while(min--)
-            ft_rerotate(list);
-    }
-}
-int find_tar(t_list *list, int data)
-{
-    int target = -1;
-    int i = 0, index = 0;
-    t_list *tmp = list;
+    int small;
 
-    while (list)
+    small = 0;
+    while (count-- > 0)
     {
-        if ((list->data > data && target == -1) || 
-            (list->data > data && list->data < target))
+        if ((*stack_a)->index >= small && (*stack_a)->index <= big)
         {
-            target = list->data;
-            index = i;
+            pb(stack_a, stack_b);
+            small++;
+            big++;
         }
-        i++;
-        list = list->next;
-    }
-
-    if (target == -1) // No larger element found, return smallest index
-    {
-        target = tmp->data;
-        index = 0;
-        i = 0;
-        while (tmp)
+        else if ((*stack_a)->index > big)
         {
-            if (tmp->data < target)
-            {
-                target = tmp->data;
-                index = i;
-            }
-            i++;
-            tmp = tmp->next;
-        }
-    }
-    return index;
-}
-
-// int find_tar(t_list *list, int data)
-// {
-//     int target;
-//     int i;
-//     i = 0;
-//     t_list *tmp;
-//     target = 0;
-//     tmp = list;
-//     while(list)
-//     {
-//         if (list->data > data && target == 0)
-//             target = list->data;
-//         else if (list->data > data && list->data < target && target != 0)
-//             target = list->data;
-//         list = list->next;
-//     }
-//     while (tmp)
-//     {
-//         if (tmp->data == target)
-//             break;
-//         i++;
-//         tmp = tmp->next;
-//     }
-//     return i;
-// }
-void finsh_target(t_list **list_a, t_list **list_b, int index)
-{
-    int size = ft_lstsize(*list_a);
-    int i = 0;
-
-    if (index == 0)
-    {
-        ft_push_a(list_a, list_b);
-        return;
-    }
-
-    if (index < size / 2)
-    {
-        while (i < index)
-        {
-            ft_rotate(list_a);
-            i++;
-        }
-    }
-    else
-    {
-        i = size - index;  // Fix off-by-one error
-        while (i--)
-        {
-            ft_rerotate(list_a);
-        }
-    }
-    ft_push_a(list_a, list_b);
-}
-void    ft_target(t_list **list_a, t_list **list_b)
-{
-
-    t_list *b;
-    int content;
-    int index;
-
-    b = *list_b;
-
-
-    while (b)
-    {
-        content = b->data;
-        index = find_tar(*list_a, content);
-        // printf("content = %d\n", content);
-        // printf("target = %d\n", index);
-        finsh_target(list_a, list_b, index);
-        b = *list_b;
-    }
-}
-
-int ft_range(t_list *list, int count)
-{
-    float range = 0;
-    while (list)
-    {
-        range += list->data;
-        list = list->next;
-    }
-    return ((int)(range / count));
-}
-void ft_separation_range(t_list **list_a, t_list **list_b, int count)
-{
-    int range = ft_range(*list_a, count);
-    int i = 0;
-    t_list *tmp = *list_a;
-
-    while (tmp && ft_lstsize(*list_a) > 3)
-    {
-        if (tmp->data < range)
-        {
-            if (i < ft_lstsize(*list_a) / 2)
-            {
-                while (i--)
-                    ft_rotate(list_a);
-            }
-            else
-            {
-                i = ft_lstsize(*list_a) - i;
-                while (i--)
-                    ft_rerotate(list_a);
-            }
-            ft_push_b(list_a, list_b);
-            tmp = *list_a;
-            i = 0;  // Reset counter
+            ra(stack_a);
+            count++;
         }
         else
         {
-            tmp = tmp->next;
-            i++;
+            pb(stack_a, stack_b);
+            rb(stack_b);
+            small++;
+            big++;
         }
     }
 }
-
-// void  ft_separation_range(t_list **list_a, t_list **list_b, int count)
-// {
-//     t_list *tmp;
-//     int i;
-//     int range;
-
-//     i = 1;
-//     tmp = *list_a;
-
-
-//     range = ft_range(*list_a, count);
-//     printf("range = %d\n", range);
-//     printf("size/2 = %d\n", (ft_lstsize(*list_a) / 2));
-    
-//     while (tmp)
-//     {
-//         if ((tmp->data) < range && ft_lstsize(*list_a) > 3)
-//         {
-//             if (i == 1 || i < (ft_lstsize(*list_a) / 2))
-//             {
-//                 while (--i)
-//                     ft_rotate(list_a);
-//                 ft_push_b(list_a, list_b);
-//                 tmp = *list_a;
-//             }
-//             else
-//             {
-//                 i = (ft_lstsize(*list_a) - i) + 1;
-//                 while (i--)
-//                     ft_rerotate(list_a);
-//                 ft_push_b(list_a, list_b);
-//                 i = 0;
-//                 tmp = *list_a;
-//             }
-//         }
-//         else 
-//             tmp = tmp->next;
-//         i++;
-//     }
-    
-// }
-
-
-int push_swap(t_list **list_a, t_list **list_b, int count)
+void ft_push_if(t_list **stack_a, t_list **stack_b, int count)
 {
-
-    ft_separation_range(list_a, list_b, count);
-    
-    while (ft_lstsize(*list_a) > 3)
-    {
-        ft_push_b(list_a, list_b);
-    }
-
-    return 0;
+    if (count <= 100)
+        ft_push_if_range(stack_a, stack_b, 15, count);
+    else 
+        ft_push_if_range(stack_a, stack_b, 30, count);
 }
+
+void ft_sort(int **tab, int count)
+{
+    int i, j, tmp;
+
+    if (!tab)
+        return;
+
+    i = 0;
+    while (i < count)
+    {
+        j = i + 1;
+        while (j < count)
+        {
+            if (*tab[i] > *tab[j])
+            {
+                tmp = *tab[i];
+                *tab[i] = *tab[j];
+                *tab[j] = tmp;
+            }
+            j++;
+        }
+        i++;
+    }
+    tab[i] = NULL;
+}
+
+int **ft_sort_int_tab(int **tab, int **sort_int, int count)
+{
+    int i;
+    int j;
+    int tmp;
+
+    i = 0;
+    sort_int = (int **)malloc(sizeof(int *) * (count + 1));
+    if (!sort_int)
+        return (ft_free_int(&sort_int),ft_free_int(&tab), NULL);
+    while (i < count)
+    {
+        sort_int[i] = malloc(sizeof(int));
+        if (!sort_int[i])
+            return (ft_free_int(&sort_int),ft_free_int(&tab), NULL);
+        *sort_int[i] = *tab[i];
+        i++;
+    }
+    ft_sort(sort_int, count);
+    return (sort_int);
+}
+
 
 int main(int argc, char **argv)
 {
-    t_list *list_a = NULL;
-    t_list *list_b = NULL;
+    t_list *stack_a = NULL;
+    t_list *stack_b = NULL;
+    int **int_argv;
+    int **int_sorted;
     int count;
-    int **tab = NULL;
+
     count = 0;
-    int fd = open("operations.txt", O_CREAT | O_RDWR, 0777);
-    tab = number_arg(argc, argv, &count);
-    if (tab == NULL)
-        return (0);
-    list_a = ft_list_input(tab, count);
-    push_swap(&list_a, &list_b, count);
-    ft_sort_th(&list_a);
-    ft_target(&list_a, &list_b);
-    // printf("min = %d\n", ft_min(list_a));
-    sort_list(&list_a, ft_min(list_a));
-    // ft_print_stacks(list_a, list_b);
-    close(fd);
-    return 0;
+    int_argv = get_int_arg(argc, argv, &count);
+    if (!int_argv)
+        return (1);
+    int_sorted = ft_sort_int_tab(int_argv, int_sorted, count);
+    if (!int_argv || !int_sorted)
+        return (ft_free_int(&int_argv), ft_free_int(&int_sorted), 1); 
+    stack_a = ft_create_stack(int_argv, int_sorted, count);
+    if (!stack_a)
+        return (ft_free_int(&int_argv), ft_free_int(&int_sorted), 1); 
+    if (count <= 5)
+        ft_sort_if_tive(&stack_a, &stack_b, count);
+    else
+    {
+        ft_push_if(&stack_a, &stack_b, count);
+        finish_sort(&stack_a, &stack_b);
+    }
 }

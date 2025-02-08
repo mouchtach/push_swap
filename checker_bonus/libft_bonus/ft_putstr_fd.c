@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 18:19:49 by ymouchta          #+#    #+#             */
-/*   Updated: 2024/10/30 18:19:49 by ymouchta         ###   ########.fr       */
+/*   Created: 2024/11/03 01:17:14 by ymouchta          #+#    #+#             */
+/*   Updated: 2024/11/03 01:17:14 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../push_swap_bonus.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+
+void	ft_putstr_fd(char *s, int fd)
 {
-	char	*p;
-	size_t	i;
-	size_t	stlen;
+	int	i;
 
 	i = 0;
 	if (!s)
-		return (NULL);
-	stlen = ft_strlen(s);
-	if (start >= stlen)
-		return (ft_strdup(""));
-	if (len > stlen - start)
-		len = stlen - start;
-	p = (char *)malloc(len + 1);
-	if (!p)
-		return (NULL);
-	while (i < len && s[start + i])
+		return ;
+	while (s[i])
 	{
-		p[i] = s[start + i];
+		write(fd, &s[i], 1);
 		i++;
 	}
-	p[i] = '\0';
-	return (p);
 }

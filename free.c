@@ -1,24 +1,63 @@
+
 #include "push_swap.h"
 
-
-
-void free_stack_number(int ***tab)
+void ft_free_str(char **str)
 {
-    int i = 0;
-    while(*tab[i])
+    if (!str || !(*str))
+        return;
+    free(*str);
+    *str = NULL;
+}
+
+void ft_free_tab_str(char ***str)
+{
+    int i;
+
+    i = 0;
+    if (!str || !(*str)) 
+        return;
+    while ((*str)[i])
     {
-        free(*tab[i]);
+        free((*str)[i]);
+        i++;
+    }
+    free(*str);
+    *str = NULL;
+}
+
+void    ft_free_int(int ***tab)
+{
+    int i;
+
+    i = 0;
+    if (!tab || !(*tab))
+        return;
+    while ((*tab)[i])
+    {
+        free((*tab)[i]);
         i++;
     }
     free(*tab);
+    *tab = NULL;
 }
-void free_stack_string(char **str)
+
+void	ft_free_stack(t_list **lst)
 {
-    int i = 0;
-    while(str[i])
-    {
-        free(str[i]);
-        i++;
-    }
-    free(str);
+	t_list	*tmp;
+
+	if (!lst || !*lst) 
+		return;
+	while (*lst)
+	{
+		tmp = (*lst)->next;
+		free(*lst);        
+		*lst = tmp;        
+	}
+	*lst = NULL; 
+}
+
+void ft_error()
+{
+    ft_putstr_fd("Error\n", 2);
+    exit(1);
 }

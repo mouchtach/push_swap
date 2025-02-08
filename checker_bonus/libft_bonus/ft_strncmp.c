@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 18:19:49 by ymouchta          #+#    #+#             */
-/*   Updated: 2024/10/30 18:19:49 by ymouchta         ###   ########.fr       */
+/*   Created: 2024/10/25 22:36:56 by ymouchta          #+#    #+#             */
+/*   Updated: 2024/10/27 19:08:31 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../push_swap_bonus.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	char	*p;
-	size_t	i;
-	size_t	stlen;
+	size_t			i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
 	i = 0;
-	if (!s)
-		return (NULL);
-	stlen = ft_strlen(s);
-	if (start >= stlen)
-		return (ft_strdup(""));
-	if (len > stlen - start)
-		len = stlen - start;
-	p = (char *)malloc(len + 1);
-	if (!p)
-		return (NULL);
-	while (i < len && s[start + i])
+	while (i < n && (str1[i] || str2[i]))
 	{
-		p[i] = s[start + i];
+		if (str1[i] != str2[i])
+			return (str1[i] - str2[i]);
 		i++;
 	}
-	p[i] = '\0';
-	return (p);
+	return (0);
 }

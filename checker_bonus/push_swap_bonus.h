@@ -1,19 +1,30 @@
-#ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS_H
+#define PUSH_SWAP_BONUS_H
 
 #include <fcntl.h>
 #include <limits.h>
+
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 100
+# endif
+
 typedef struct s_list
 {
 	int			data;
-	size_t		index;
 	struct s_list	*next;
 }	t_list;
+
+//get_next_line
+char	*ft_strjoin_get(char const *s1, char const *s2);
+char	*ft_strdup_get(const char *s);
+size_t	ft_strlen_get(const char *s);
+char	*ft_strchr_get(const char *s, int c);
+char	*get_next_line(int fd);
 
 //freee
 void    ft_free_tab_str(char ***str);
@@ -38,34 +49,13 @@ void    rrr(t_list **lst_a, t_list **lst_b);
 //input
 int		**get_int_arg(int argc, char **argv, int *count);
 
-//print
-void	ft_print_int_tab(int **tab);
-void	ft_print_stack(t_list *lst);
-void	printStacks(t_list* stack_a, t_list* stack_b);
-void	printStacks_index(t_list* stack_a, t_list* stack_b);
-
 //linkedlist
-t_list *ft_create_stack(int **input, int **sorted,  int count);
+t_list *ft_create_stack(int **input, int count);
 t_list	*ft_lstlast(t_list *lst);
-t_list	*ft_lstnew(int content, int index);
+t_list	*ft_lstnew(int content);
 void	ft_lstclear(t_list **lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
-
-//sort
-void 	ft_sort_tow(t_list **lst);
-void 	ft_sort_three(t_list **lst);
-void 	ft_sort_four(t_list **lst_a, t_list **lst_b);
-void 	ft_sort_five(t_list **lst_a, t_list **lst_b);
-void   ft_sort_if_tive(t_list **lst_a, t_list **lst_b, int count);
-
-//utils
-int		find_index_data(t_list *stack, int value);
-void	ft_move_node_a_to_top(t_list **stack, int value);
-void	ft_move_node_b_to_top(t_list **stack, int value);
-int		get_min_stack(t_list *stack);
-int		get_max_stack(t_list *stack);
-
 
 //libft
 int		ft_atoi(const char *str);
@@ -76,5 +66,6 @@ char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen(const char *s);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+
 
 #endif

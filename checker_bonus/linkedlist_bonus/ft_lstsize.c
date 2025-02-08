@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_back.c                                      :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 19:20:53 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/08 15:12:43 by ymouchta         ###   ########.fr       */
+/*   Created: 2024/11/06 17:59:04 by ymouchta          #+#    #+#             */
+/*   Updated: 2025/02/07 19:26:23 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../push_swap_bonus.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+int	ft_lstsize(t_list *lst)
 {
-	t_list	*last;
+	int	size;
 
-	if (!lst || !new)
-		return ;
-	if (!*lst)
+	size = 0;
+	if (!lst)
+		return (0);
+	while (lst)
 	{
-		*lst = new;
-		return ;
+		lst = lst -> next;
+		size++;
 	}
-	if (new && lst)
-	{
-		last = ft_lstlast(*lst);
-		last -> next = new;
-	}
+	return (size);
 }

@@ -1,5 +1,5 @@
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 int if_double_sort(int **tab)
 {
@@ -48,7 +48,7 @@ int **atoi_arg(char **str, int **count)
             return (ft_free_int(&tab), NULL);
         res = ft_atoi(str[i]);
         if (res == 0 && * str[i] != '0')
-            return(ft_free_tab_str(&str), ft_free_int(&tab), ft_error(), NULL);
+            ft_error();
         *tab[i] = res ;
         i++;
     }
@@ -91,7 +91,8 @@ char *read_arg(int argc, char **argv)
         if(check_error(argv[i]) == 1)
             ft_error();
         tmp = ft_strdup(str);
-        ft_free_str(&str);
+        if(str)
+            free(str);
         str = ft_strjoin(tmp, argv[i]);
         free (tmp);
         argc--;
@@ -110,14 +111,18 @@ int **get_int_arg(int argc, char **argv, int *count)
         return NULL;
     stack = ft_split(str, ' ');
     if (!stack)
-        return(ft_free_str(&str), NULL);
+        return (ft_free_str(&str), NULL);
     ft_free_str(&str);
     int_stack = atoi_arg(stack, &count);
-    ft_free_tab_str(&stack);
     if (!int_stack)
         return (ft_free_tab_str(&stack), NULL);
-    // i need condition to check if empty argv
+    if (argc != (*count + 1))
+    {
+        // ft_free_int(&int_stack); //  mochkil fl free
+        // ft_free_tab_str(&stack); // mochkil fl free
+        ft_error();
+    }
     if (if_double_sort(int_stack) == 1)
-        return(ft_free_tab_str(&stack),ft_free_int(&int_stack), ft_free_str(&str), ft_error(), NULL);
+        ft_error();
     return int_stack;
 }

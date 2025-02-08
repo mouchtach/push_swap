@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
 int	ft_atoi(const char *str)
 {
-	int					i;
-	int					x;
-	unsigned long long	t;
+	int			i;
+	int			x;
+	long long	t;
 
 	i = 0;
 	x = 1;
@@ -32,9 +32,7 @@ int	ft_atoi(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		t = (t * 10) + (str[i] - 48);
-		if (t > 9223372036854775807 && x == 1)
-			return (-1);
-		if (t > 9223372036854775807 && x == -1)
+		if ((t * x) > INT_MAX ||(t * x) < INT_MIN)
 			return (0);
 		i++;
 	}

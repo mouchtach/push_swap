@@ -1,22 +1,39 @@
 #include "../push_swap.h"
 
-t_list *ft_list_input(int **input, int count)
+size_t ft_get_index(int **sorted, int data)
 {
-    int i = 0;
-    t_list *new;
-    t_list *list_a = NULL;
+    size_t i;
 
-    while (i < count)
+    i = 0;
+    while (sorted[i])
     {
-        new = ft_lstnew(*input[i]);
-        if (!new)
-        {
-            ft_lstclear(&list_a);
-            return (NULL);
-        }
-        ft_lstadd_back(&list_a, new);
+        if (*sorted[i] == data)
+            return (i);
         i++;
     }
-    return(list_a);
+    return (-1);
 }
 
+t_list *ft_create_stack(int **input, int **sorted,  int count)
+{
+    t_list *stack = NULL;
+    t_list *tmp;
+
+    int i;
+    int index;
+
+    i = 0;
+   while (i < count)
+   {
+        index = ft_get_index(sorted, *input[i]);
+        tmp = ft_lstnew(*input[i], index);
+        if(!tmp)
+            ft_lstclear(&stack);
+        ft_lstadd_back(&stack, tmp);
+        i++;
+    
+   }
+   ft_free_int(&input);
+   ft_free_int(&sorted);
+   return (stack);
+}

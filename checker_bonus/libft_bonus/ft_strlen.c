@@ -1,39 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 18:19:49 by ymouchta          #+#    #+#             */
-/*   Updated: 2024/10/30 18:19:49 by ymouchta         ###   ########.fr       */
+/*   Created: 2024/10/24 11:00:34 by ymouchta          #+#    #+#             */
+/*   Updated: 2024/10/24 11:18:29 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../push_swap_bonus.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+size_t	ft_strlen(const char *s)
 {
-	char	*p;
 	size_t	i;
-	size_t	stlen;
 
 	i = 0;
-	if (!s)
-		return (NULL);
-	stlen = ft_strlen(s);
-	if (start >= stlen)
-		return (ft_strdup(""));
-	if (len > stlen - start)
-		len = stlen - start;
-	p = (char *)malloc(len + 1);
-	if (!p)
-		return (NULL);
-	while (i < len && s[start + i])
-	{
-		p[i] = s[start + i];
+	while (s[i])
 		i++;
-	}
-	p[i] = '\0';
-	return (p);
+	return (i);
 }
