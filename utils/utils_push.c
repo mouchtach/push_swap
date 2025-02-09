@@ -6,11 +6,11 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 23:00:28 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/08 23:15:47 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/09 17:23:10 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	find_index_data(t_list *stack, int value)
 {
@@ -53,6 +53,7 @@ void	ft_move_node_b_to_top(t_list **stack, int value)
 		}
 	}
 }
+
 void	ft_move_node_a_to_top(t_list **stack, int value)
 {
 	int	target;

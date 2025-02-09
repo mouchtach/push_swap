@@ -28,7 +28,7 @@ t_list *ft_create_stack(int **input, int **sorted,  int count)
         index = ft_get_index(sorted, *input[i]);
         tmp = ft_lstnew(*input[i], index);
         if(!tmp)
-            ft_lstclear(&stack);
+            return(ft_lstclear(&stack), NULL);
         ft_lstadd_back(&stack, tmp);
         i++;
     

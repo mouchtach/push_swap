@@ -1,7 +1,7 @@
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-int if_double_sort(int **tab)
+static int if_double_sort(int **tab)
 {
     int i;
     int j;
@@ -29,7 +29,7 @@ int if_double_sort(int **tab)
     return (1);
 }
 
-int **atoi_arg(char **str, int **count) 
+static int **atoi_arg(char **str, int **count) 
 {
     int i = 0;
     int res = 0;
@@ -56,7 +56,7 @@ int **atoi_arg(char **str, int **count)
     return tab;
 }
 
-int check_error(char *str)
+static int check_error(char *str)
 {
     int i = 0;
     while (str[i])
@@ -75,7 +75,7 @@ int check_error(char *str)
     return (0);
 }
 
-char *read_arg(int argc, char **argv)
+static char *read_arg(int argc, char **argv)
 {
     char *str;
     char *tmp;

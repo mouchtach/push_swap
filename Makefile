@@ -1,6 +1,6 @@
-NAME = push_swap.a
+NAME = push_swap
 
-SOURCES  = free.c input.c print.c utils_push.c sort.c \
+SOURCES  = push_swap.c utils/free.c utils/input.c utils/sort.c utils/utils_push.c utils/utils_sort.c\
 	operations/pa.c operations/pb.c operations/ra.c operations/rb.c \
 	operations/rr.c operations/rra.c operations/rrb.c operations/rrr.c \
 	operations/sa.c operations/sb.c operations/ss.c \
@@ -9,32 +9,25 @@ SOURCES  = free.c input.c print.c utils_push.c sort.c \
 	libft/ft_atoi.c libft/ft_putstr_fd.c libft/ft_split.c libft/ft_strdup.c libft/ft_strjoin.c \
 	libft/ft_strlen.c libft/ft_strncmp.c libft/ft_substr.c
 
-BSOURCES = checker.c get_next_line.c get_next_line_utils.c \
-	
-	
 OBJECTS = $(SOURCES:.c=.o)
-BOBJECTS = $(BSOURCES:.c=.o)
-AR = ar rcs
+
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-exe: all 
-	@$(CC) push_swap.c push_swap.a  -o push_swap
-
-bonus: exe
-	@make -C checker_bonus 
+all: $(NAME)
 	
- 
-all: $(NAME) $(LIBFT)
-	@make clean
+bonus: all 
+	@make -C checker_bonus
 
 $(NAME): $(OBJECTS)
-	@$(AR) $@ $^
+	@$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME)
 
 %.o: %.c push_swap.h
 	@$(CC) $(CFLAGS) -c $< -o $@
 clean:
 	@rm -rf $(OBJECTS) $(BOBJECTS)
+
 fclean: clean
 	@rm -rf $(NAME)
+	
 re: fclean all 
