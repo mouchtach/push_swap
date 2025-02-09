@@ -24,10 +24,13 @@ $(NAME): $(OBJECTS)
 
 %.o: %.c push_swap.h
 	@$(CC) $(CFLAGS) -c $< -o $@
+	
 clean:
+	@make clean -C checker_bonus
 	@rm -rf $(OBJECTS) $(BOBJECTS)
 
 fclean: clean
+	@make fclean -C checker_bonus
 	@rm -rf $(NAME)
 
 re: fclean all 

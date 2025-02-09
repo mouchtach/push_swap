@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 17:38:52 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/09 21:34:41 by ymouchta         ###   ########.fr       */
+/*   Created: 2025/02/09 23:30:56 by ymouchta          #+#    #+#             */
+/*   Updated: 2025/02/09 23:31:59 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_bonus.h"
+#include "../push_swap.h"
 
 static int	if_double_sort(int **tab)
 {
@@ -37,6 +37,7 @@ static int	if_double_sort(int **tab)
 			return (0);
 		i++;
 	}
+    write(1, "OK\n", 3);
 	return (1);
 }
 
@@ -58,10 +59,10 @@ static int	**atoi_arg(char **str, int **count)
 	{
 		tab[i] = malloc(sizeof(int));
 		if (!tab[i])
-			return (ft_free_int(&tab), ft_free_tab_str(&str), NULL);
+			return (ft_free_int(&tab), NULL);
 		res = ft_atoi(str[i]);
 		if (res == 0 && *str[i] != '0')
-			return (ft_free_tab_str(&str), ft_free_int(&tab), NULL);
+			return (ft_free_tab_str(&str), ft_free_int(&tab), ft_error(), NULL);
 		*tab[i] = res ;
 		i++;
 	}
@@ -102,7 +103,7 @@ static char	*read_arg(int argc, char **argv)
 	tmp = NULL;
 	str = NULL;
 	if (argc == 1)
-		ft_error();
+		return (NULL);
 	while (argc > 1)
 	{
 		if (check_error(argv[i]) == 1)
@@ -135,8 +136,7 @@ int	**get_int_arg(int argc, char **argv, int *count)
 	if (!int_stack)
 		return (ft_free_tab_str(&stack), NULL);
 	if (if_double_sort(int_stack) == 1)
-		return (ft_free_tab_str(&stack), ft_free_int(&int_stack), 
-			ft_free_str(&str), NULL);
+		return (ft_free_tab_str(&stack), 
+			ft_free_str(&str), ft_free_int(&int_stack), NULL);
 	return (int_stack);
 }
-// i need condition to check if empty argv
