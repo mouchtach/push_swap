@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 17:38:52 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/09 18:32:32 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/09 21:34:04 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ static int	if_double_sort(int **tab)
 			return (0);
 		i++;
 	}
-	return (1);
+	ft_free_int(&tab);
+	return (ft_error(), 0);
 }
 
 static int	**atoi_arg(char **str, int **count)
@@ -136,7 +137,7 @@ int	**get_int_arg(int argc, char **argv, int *count)
 		return (ft_free_tab_str(&stack), NULL);
 	if (if_double_sort(int_stack) == 1)
 		return (ft_free_tab_str(&stack), ft_free_int(&int_stack), 
-			ft_free_str(&str), ft_error(), NULL);
+			ft_free_str(&str), NULL);
 	return (int_stack);
 }
 // i need condition to check if empty argv

@@ -1,45 +1,57 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free_bonus.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/09 17:41:40 by ymouchta          #+#    #+#             */
+/*   Updated: 2025/02/09 20:57:52 by ymouchta         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void    ft_free_tab_str(char ***str)
+void	ft_free_str(char **str)
 {
-    int i;
-
-    i = 0;
-    if (!*str)
-        return ;
-    while (*str[i])
-    {
-        free(*str[i]);
-        i++;
-    }
-    free(*str);
+	if (!str || !(*str))
+		return ;
+	free(*str);
+	*str = NULL;
 }
-void ft_free_str(char **str)
+
+void	ft_free_tab_str(char ***str)
 {
-    if (*str)
-    {
-        free(*str);
-        *str = NULL;
-    }
+	int	i;
+
+	i = 0;
+	if (!str || !(*str)) 
+		return ;
+	while ((*str)[i])
+	{
+		free((*str)[i]);
+		i++;
+	}
+	free(*str);
+	*str = NULL;
 }
-void    ft_free_int(int ***tab)
+
+void	ft_free_int(int ***tab)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (!*tab || !**tab)
-        return ;
-    
-    while (*tab[i])
-    {
-        printf("%d\n", *tab[0][i]);
-        free(*tab[i]);
-        i++;
-    }
-    free(*tab);
-
+	i = 0;
+	if (!tab || !(*tab))
+		return ;
+	while ((*tab)[i])
+	{
+		free((*tab)[i]);
+		i++;
+	}
+	free(*tab);
+	*tab = NULL;
 }
+
 void	ft_free_stack(t_list **lst)
 {
 	t_list	*tmp;
@@ -49,15 +61,14 @@ void	ft_free_stack(t_list **lst)
 	while (*lst)
 	{
 		tmp = (*lst)->next;
-		free (*lst);
+		free(*lst);
 		*lst = tmp;
 	}
-	*lst = NULL;
+	*lst = NULL; 
 }
 
-void ft_error()
+void	ft_error(void)
 {
-    ft_putstr_fd("Error", 2);
-    exit(1);
+	write(2, "Error\n", 6);
+	exit(1);
 }
-

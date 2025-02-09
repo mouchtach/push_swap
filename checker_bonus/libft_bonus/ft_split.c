@@ -12,7 +12,6 @@
 
 #include "../push_swap_bonus.h"
 
-
 static char	**freep(char **p, size_t size)
 {
 	size_t	i;
@@ -69,6 +68,7 @@ static char	**pcpy(const char *s, char **p, char c, size_t x)
 char	**ft_split(char const *s, char c)
 {
 	char	**p;
+	char	**result;
 	size_t	count;
 
 	if (!s)
@@ -77,9 +77,11 @@ char	**ft_split(char const *s, char c)
 	p = (char **)malloc(sizeof(char *) * (count + 1));
 	if (!p)
 		return (NULL);
-	p = pcpy(s, p, c, count);
-	if (!p)
+	result = pcpy(s, p, c, count);
+	if (!result)
+	{
+		free(p);
 		return (NULL);
-	return (p);
+	}
+	return (result);
 }
-

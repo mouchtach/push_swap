@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 17:00:11 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/09 18:47:43 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/09 21:13:17 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ int		get_max_stack(t_list *stack);
 //utils_sort
 void	finish_sort(t_list **stack_a, t_list **stack_b);
 void	ft_push_if(t_list **stack_a, t_list **stack_b, int count);
-void	ft_push_if_range(t_list **stack_a, t_list **stack_b, int big, int count);
+void	ft_push_if_range(t_list **stack_a, 
+			t_list **stack_b, int big, int count);
 void	ft_sort(int **tab, int count);
 int		**ft_sort_int_tab(int **tab, int count);
 

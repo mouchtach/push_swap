@@ -1,27 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   creat_list.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/09 18:43:11 by ymouchta          #+#    #+#             */
+/*   Updated: 2025/02/09 21:35:53 by ymouchta         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap_bonus.h"
 
-t_list *ft_create_stack(int **input, int count)
+size_t	ft_get_index(int **sorted, int data)
 {
-    t_list *stack;
-    t_list *tmp;
-    t_list  *f;
-    int i;
+	size_t	i;
 
-    i = 0;
-    stack = ft_lstnew(*input[i]);
-    f = stack;
-    while (++i < count)
-    {    
-        tmp = malloc(sizeof(t_list));
-        if (!tmp)
-            return (ft_free_stack(&stack), NULL); // mochkil fl free
-        if ((int)index == -1)
-            return (ft_free_stack(&stack), NULL); // mochkil fl free
-        tmp->data = *input[i];
-        tmp->next = NULL;
-        f->next = tmp;
-        f = tmp;
-    }
-    return (stack);
+	i = 0;
+	while (sorted[i])
+	{
+		if (*sorted[i] == data)
+			return (i);
+		i++;
+	}
+	return (-1);
 }
 
+t_list	*ft_create_stack(int **input, int count)
+{
+	t_list	*stack;
+	t_list	*tmp;
+	int		i;
+
+	stack = NULL;
+	i = 0;
+	while (i < count)
+	{
+		tmp = ft_lstnew(*input[i]);
+		if (!tmp)
+			return (ft_lstclear(&stack), ft_free_int(&input), NULL);
+		ft_lstadd_back(&stack, tmp);
+		i++;
+	}
+	ft_free_int(&input);
+	return (stack);
+}
