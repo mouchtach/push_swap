@@ -12,13 +12,12 @@
 
 #include "../push_swap.h"
 
-
 char	*ft_strdup(const char *s)
 {
 	size_t	i;
 	char	*p;
-	
-	if(!s)
+
+	if (!s)
 		return (NULL);
 	i = 0;
 	p = (char *)malloc(ft_strlen(s) + 1);

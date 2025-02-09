@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 23:05:22 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/09 17:23:07 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/09 17:58:14 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	ft_sort_four(t_list **stack_a, t_list **stack_b)
 
 	min = get_min_stack(*stack_a);
 	ft_move_node_a_to_top(stack_a, min);
+	pb(stack_a, stack_b);
 	ft_sort_three(stack_a);
 	pa(stack_a, stack_b);
 }

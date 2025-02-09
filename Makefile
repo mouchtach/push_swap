@@ -2,11 +2,11 @@ NAME = push_swap
 
 SOURCES  = push_swap.c utils/free.c utils/input.c utils/sort.c utils/utils_push.c utils/utils_sort.c\
 	operations/pa.c operations/pb.c operations/ra.c operations/rb.c \
-	operations/rr.c operations/rra.c operations/rrb.c operations/rrr.c \
-	operations/sa.c operations/sb.c operations/ss.c \
+	operations/rra.c operations/rrb.c \
+	operations/sa.c operations/sb.c \
 	linkedlist/creat_list.c linkedlist/ft_add_back.c linkedlist/ft_add_last.c \
 	linkedlist/ft_lstclear.c linkedlist/ft_lstnew.c linkedlist/ft_lstsize.c \
-	libft/ft_atoi.c libft/ft_putstr_fd.c libft/ft_split.c libft/ft_strdup.c libft/ft_strjoin.c \
+	libft/ft_atoi.c libft/ft_split.c libft/ft_strdup.c libft/ft_strjoin.c \
 	libft/ft_strlen.c libft/ft_strncmp.c libft/ft_substr.c
 
 OBJECTS = $(SOURCES:.c=.o)
@@ -29,5 +29,5 @@ clean:
 
 fclean: clean
 	@rm -rf $(NAME)
-	
+
 re: fclean all 

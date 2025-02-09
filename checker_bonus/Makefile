@@ -14,7 +14,6 @@ OBJECTS = $(SOURCES:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-
 all: $(NAME)
 
 $(NAME): $(OBJECTS)

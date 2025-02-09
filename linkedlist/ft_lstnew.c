@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 12:50:40 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/08 15:13:07 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/09 18:46:05 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,3 @@ t_list	*ft_lstnew(int content, int index)
 	element->next = NULL;
 	return (element);
 }
-

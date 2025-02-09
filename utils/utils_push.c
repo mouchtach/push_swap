@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 23:00:28 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/09 17:23:10 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/09 17:55:53 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	ft_move_node_a_to_top(t_list **stack, int value)
 	{
 		while (target < ft_lstsize(*stack))
 		{
-			rrb(stack);
+			rra(stack);
 			target++;
 		}
 	}

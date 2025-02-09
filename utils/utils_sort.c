@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 17:18:24 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/09 17:29:19 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/09 17:38:05 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	ft_sort(int **tab, int count)
 
 	i = 0;
 	if (!tab)
-		return;
+		return ;
 	while (i < count)
 	{
 		j = i + 1;
@@ -94,19 +94,19 @@ void	ft_sort(int **tab, int count)
 
 int	**ft_sort_int_tab(int **tab, int count)
 {
-	int **sort_int;
+	int	**sort_int;
 	int	i;
 
 	i = 0;
 	sort_int = NULL;
 	sort_int = (int **)malloc(sizeof(int *) * (count + 1));
 	if (!sort_int)
-		return (ft_free_int(&sort_int),ft_free_int(&tab), NULL);
+		return (ft_free_int(&sort_int), ft_free_int(&tab), NULL);
 	while (i < count)
 	{
 		sort_int[i] = malloc(sizeof(int));
 		if (!sort_int[i])
-			return (ft_free_int(&sort_int),ft_free_int(&tab), NULL);
+			return (ft_free_int(&sort_int), ft_free_int(&tab), NULL);
 		*sort_int[i] = *tab[i];
 		i++;
 	}

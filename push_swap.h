@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 17:00:11 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/09 17:28:21 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/09 18:47:43 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,12 @@ void	ft_error(void);
 //operations
 void	sa(t_list **lst);
 void	sb(t_list **lst);
-void	ss(t_list **lst_a, t_list **lst_b);
 void	pa(t_list **lst_a, t_list **lst_b);
 void	pb(t_list **lst_a, t_list **lst_b);
 void	ra(t_list **lst);
 void	rb(t_list **lst);
-void	rr(t_list **lst_a, t_list **lst_b);
 void	rra(t_list **lst);
 void	rrb(t_list **lst);
-void	rrr(t_list **lst_a, t_list **lst_b);
 
 //input
 int		**get_int_arg(int argc, char **argv, int *count);
@@ -81,7 +78,6 @@ int		**ft_sort_int_tab(int **tab, int count);
 
 //libft
 int		ft_atoi(const char *str);
-void	ft_putstr_fd(char *s, int fd);
 char	**ft_split(char const *s, char c);
 char	*ft_strdup(const char *s1);
 char	*ft_strjoin(char const *s1, char const *s2);
