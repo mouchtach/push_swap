@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 21:06:42 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/09 21:11:11 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/10 13:48:33 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ void	ra(t_list **lst);
 void	rb(t_list **lst);
 void	rra(t_list **lst);
 void	rrb(t_list **lst);
+void	rr(t_list **stack_a, t_list **stack_b);
+void	rrr(t_list **stack_a, t_list **stack_b);
+void	ss(t_list **stack_a, t_list **stack_b);
 
 //input
 int		**get_int_arg(int argc, char **argv, int *count);

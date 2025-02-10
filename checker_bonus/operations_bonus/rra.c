@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 18:38:18 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/09 18:55:39 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/10 13:47:36 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,10 @@ void	rra(t_list **lst)
 	tmp->next = NULL;
 	tmp2->next = *lst;
 	*lst = tmp2;
+}
+
+void	rrr(t_list **stack_a, t_list **stack_b)
+{
+	rra(stack_a);
+	rra(stack_b);
 }
