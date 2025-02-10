@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 21:03:18 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/10 14:21:35 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:14:31 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	main(int argc, char **argv)
 		return (0);
 	stack_a = ft_create_stack(int_argv, count);
 	if (!stack_a)
-		return (1);
+		return (0);
 	aplication_peration(&stack_a, &stack_b);
 	check_if_sort(stack_a);
 	return (ft_free_stack(&stack_a), ft_free_stack(&stack_b), 0);

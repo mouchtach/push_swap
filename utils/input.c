@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 17:38:52 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/10 17:03:44 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:16:57 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	**atoi_arg(char **str, int **count)
 	int	**tab;
 
 	i = 0;
-	res = 0;
+	**count = 0;
 	tab = NULL;
 	while (str[**count])
 		**count += 1;
@@ -131,6 +131,7 @@ int	**get_int_arg(int argc, char **argv, int *count)
 	char	**stack;
 	int		**int_stack;
 
+	*count = 0;
 	str = read_arg(argc, argv);
 	if (!str)
 		return (NULL);

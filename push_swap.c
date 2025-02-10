@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 23:00:02 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/10 16:49:59 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:10:57 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int argc, char **argv)
 
 	stack_a = NULL;
 	stack_b = NULL;
-	count = 0;
 	int_argv = get_int_arg(argc, argv, &count);
 	if (!int_argv)
 		return (0);
@@ -39,5 +38,5 @@ int	main(int argc, char **argv)
 		ft_push_if(&stack_a, &stack_b, count);
 		finish_sort(&stack_a, &stack_b);
 	}
-	return(0);
+	return (0);
 }
