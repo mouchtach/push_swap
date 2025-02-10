@@ -34,8 +34,6 @@ static void	ft_cpy(char **dst, char **src)
 			(*dst)[i] = (*src)[i];
 			i++;
 		}
-		if ((*src)[i] == '\n')
-			(*dst)[i++] = '\n';
 		(*dst)[i] = '\0';
 	}
 }
@@ -50,8 +48,6 @@ static char	*extra_line(char **line)
 	if (!line && !*line)
 		return (NULL);
 	while ((*line)[i] && (*line)[i] != '\n')
-		i++;
-	if ((*line)[i] == '\n')
 		i++;
 	dst = malloc(i + 1);
 	if (!dst)

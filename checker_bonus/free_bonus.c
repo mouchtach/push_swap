@@ -36,22 +36,23 @@ void	ft_free_tab_str(char ***str)
 	*str = NULL;
 }
 
-void	ft_free_int(int ***tab)
+void ft_free_int(int ***tab)
 {
-	int	i;
+	int i;
 
 	i = 0;
-	if (!tab || !(*tab))
-		return ;
-	while ((*tab)[i])
-	{
-		free((*tab)[i]);
-		i++;
-	}
-	free(*tab);
-	*tab = NULL;
+    if (*tab)
+    {
+        while((*tab)[i])
+        {
+            free((*tab)[i]); 
+            (*tab)[i] = NULL;
+			i++;
+        }
+        free(*tab); 
+        *tab = NULL;
+    }
 }
-
 void	ft_free_stack(t_list **lst)
 {
 	t_list	*tmp;

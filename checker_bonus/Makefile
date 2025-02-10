@@ -1,7 +1,7 @@
 NAME = ../checker
 
 SOURCES = libft_bonus/ft_atoi.c libft_bonus/ft_split.c \
-	libft_bonus/ft_strdup.c libft_bonus/ft_strjoin.c libft_bonus/ft_strlen.c libft_bonus/ft_strncmp.c \
+	libft_bonus/ft_strdup.c libft_bonus/ft_strjoin.c libft_bonus/ft_strlen.c libft_bonus/ft_strcmp.c \
 	libft_bonus/ft_substr.c \
 	linkedlist_bonus/creat_list.c linkedlist_bonus/ft_add_back.c linkedlist_bonus/ft_add_last.c \
 	linkedlist_bonus/ft_lstclear.c linkedlist_bonus/ft_lstnew.c linkedlist_bonus/ft_lstsize.c \

@@ -14,27 +14,27 @@
 
 static void	operation(t_list **stack_a, t_list **stack_b, char *line)
 {
-	if (ft_strncmp(line, "rra", 3) == 0)
+	if (!ft_strcmp(line, "rra"))
 		rra(stack_a);
-	else if (ft_strncmp(line, "rrb", 3) == 0)
+	else if (!ft_strcmp(line, "rrb"))
 		rrb(stack_a);
-	else if (ft_strncmp(line, "rrr", 3) == 0)
+	else if (!ft_strcmp(line, "rrr"))
 		rrr(stack_a, stack_b);
-	else if (ft_strncmp(line, "rr", 2) == 0)
+	else if (!ft_strcmp(line, "rr"))
 		rr(stack_a, stack_b);
-	else if (ft_strncmp(line, "sa", 2) == 0)
+	else if (!ft_strcmp(line, "sa"))
 		sa(stack_a);
-	else if (ft_strncmp(line, "sb", 2) == 0)
+	else if (!ft_strcmp(line, "sb"))
 		sb(stack_b);
-	else if (ft_strncmp(line, "ss", 2) == 0)
+	else if (!ft_strcmp(line, "ss"))
 		ss(stack_a, stack_b);
-	else if (ft_strncmp(line, "pa", 2) == 0)
+	else if (!ft_strcmp(line, "pa"))
 		pa(stack_a, stack_b);
-	else if (ft_strncmp(line, "pb", 2) == 0)
+	else if (!ft_strcmp(line, "pb"))
 		pb(stack_a, stack_b);
-	else if (ft_strncmp(line, "ra", 2) == 0)
+	else if (!ft_strcmp(line, "ra"))
 		ra(stack_a);
-	else if (ft_strncmp(line, "rb", 2) == 0)
+	else if (!ft_strcmp(line, "rb"))
 		rb(stack_b);
 	else
 		return (ft_free_stack(stack_a), 
@@ -89,10 +89,10 @@ int	main(int argc, char **argv)
 	if (!stack_a)
 		return (0);
 	aplication_peration(&stack_a, &stack_b);
-	if (check_if_sort(stack_a) || !stack_b)
-		write(1, "KO\n", 3);
-	else
+	if (check_if_sort(stack_a) == 0 && !stack_b)
 		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
 	return (ft_free_stack(&stack_a), ft_free_stack(&stack_b), 0);
 }
 
