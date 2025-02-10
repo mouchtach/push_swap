@@ -16,7 +16,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 	
-bonus: all 
+bonus: all checker_bonus
 	@make -C checker_bonus
 
 $(NAME): $(OBJECTS)
