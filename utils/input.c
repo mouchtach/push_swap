@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 17:38:52 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/10 12:45:07 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:03:44 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	if_double_sort(int **tab)
 		while (tab[j])
 		{
 			if (*tab[i] == *tab[j])
-				return (write(2, "Error\n", 6), 1);
+				return (ft_free_int(&tab), ft_error(), 1);
 			j++;
 		}
 		i++;
@@ -61,7 +61,7 @@ static int	**atoi_arg(char **str, int **count)
 			return (ft_free_int(&tab), NULL);
 		res = ft_atoi(str[i]);
 		if (res == 0 && *str[i] != '0')
-			return (ft_free_tab_str(&str), ft_free_int(&tab), ft_error(), NULL);
+			return (ft_free_str(str), ft_free_int(&tab), ft_error(), NULL);
 		*tab[i] = res ;
 		i++;
 	}
@@ -89,7 +89,13 @@ static int	check_error(char *str)
 		}
 		i++;
 	}
-	return (0);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i++] != ' ')
+			return (0);
+	}
+	return (1);
 }
 
 static char	*read_arg(int argc, char **argv)
@@ -107,8 +113,8 @@ static char	*read_arg(int argc, char **argv)
 		return (ft_error(), NULL);
 	while (argc > 1)
 	{
-		if (check_error(argv[i]) == 1)
-			ft_error();
+		if (check_error(argv[i]) == 1 || argv[i][0] == '\0')
+			return (ft_free_str(&str), ft_error(), NULL);
 		tmp = ft_strdup(str);
 		ft_free_str(&str);
 		str = ft_strjoin(tmp, argv[i]);
@@ -137,8 +143,7 @@ int	**get_int_arg(int argc, char **argv, int *count)
 	if (!int_stack)
 		return (ft_free_tab_str(&stack), NULL);
 	if (if_double_sort(int_stack) == 1)
-		return (ft_free_tab_str(&stack), 
-			ft_free_str(&str), ft_free_int(&int_stack), NULL);
+		return (ft_free_int(&int_stack), NULL);
 	return (int_stack);
 }
 // i need condition to check if empty argv

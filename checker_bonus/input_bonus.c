@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 23:30:56 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/10 14:22:28 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/10 16:05:09 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,7 @@ static int	if_double_sort(int **tab)
 		}
 		i++;
 	}
-	i = 0;
-	while (tab[i] && tab[i + 1])
-	{
-		if ((*tab[i] > *tab[i + 1]))
-			return (0);
-		i++;
-	}
-	write(1, "OK\n", 3);
-	return (1);
+	return (0);
 }
 
 static int	**atoi_arg(char **str, int **count)
