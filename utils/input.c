@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 17:38:52 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/09 23:29:30 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/10 12:45:07 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	if_double_sort(int **tab)
 		while (tab[j])
 		{
 			if (*tab[i] == *tab[j])
-				return (1);
+				return (write(2, "Error\n", 6), 1);
 			j++;
 		}
 		i++;
@@ -103,6 +103,8 @@ static char	*read_arg(int argc, char **argv)
 	str = NULL;
 	if (argc == 1)
 		return (NULL);
+	if (argv[1][0] == '\0')
+		return (ft_error(), NULL);
 	while (argc > 1)
 	{
 		if (check_error(argv[i]) == 1)
