@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 23:30:56 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/09 23:31:59 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/10 14:22:28 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	if_double_sort(int **tab)
 			return (0);
 		i++;
 	}
-    write(1, "OK\n", 3);
+	write(1, "OK\n", 3);
 	return (1);
 }
 

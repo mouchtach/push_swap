@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 21:03:18 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/10 14:07:01 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/10 14:21:35 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ static void	operation(t_list **stack_a, t_list **stack_b, char *line)
 	else if (ft_strncmp(line, "rb", 2) == 0)
 		rb(stack_b);
 	else
-		return (ft_free_stack(stack_a), ft_free_stack(stack_b), ft_free_str(&line),ft_error());
+		return (ft_free_stack(stack_a), 
+			ft_free_stack(stack_b), ft_free_str(&line), ft_error());
 }
 
 static void	check_if_sort(t_list *list)
