@@ -30,6 +30,7 @@ static int	if_double_sort(int **tab)
 		}
 		i++;
 	}
+	return (0);
 }
 
 static int	**atoi_arg(char **str, int **count)
