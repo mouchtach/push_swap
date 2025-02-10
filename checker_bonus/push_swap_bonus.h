@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 21:06:42 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/10 13:48:33 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/10 21:00:15 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
 
 //libft
-int		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 char	**ft_split(char const *s, char c);
 char	*ft_strdup(const char *s1);
 char	*ft_strjoin(char const *s1, char const *s2);

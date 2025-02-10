@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 17:38:52 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/10 17:16:57 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/10 21:07:00 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,32 +40,32 @@ static int	if_double_sort(int **tab)
 	return (1);
 }
 
-static int	**atoi_arg(char **str, int **count)
+static int	**atoi_arg(char **str, int *count)
 {
-	int	i;
-	int	res;
-	int	**tab;
+	int		i;
+	long	res;
+	int		**tab;
 
 	i = 0;
-	**count = 0;
-	tab = NULL;
-	while (str[**count])
-		**count += 1;
-	tab = (int **)malloc(sizeof(int *) * (**count + 1));
-	if (!tab) 
+	while (str[*count])
+		(*count)++;
+	tab = (int **)malloc(sizeof(int *) * (*count + 1));
+	if (!tab)
 		return (NULL);
-	while (i < **count) 
+	while (i < *count)
 	{
 		tab[i] = malloc(sizeof(int));
 		if (!tab[i])
 			return (ft_free_int(&tab), NULL);
 		res = ft_atoi(str[i]);
-		if (res == 0 && *str[i] != '0')
-			return (ft_free_str(str), ft_free_int(&tab), ft_error(), NULL);
-		*tab[i] = res ;
+		if (res > 2147483647 || res < -2147483648)
+			break ;
+		*(tab[i]) = (int)res;
 		i++;
 	}
 	tab[i] = NULL;
+	if (res > 2147483647 || res < -2147483648)
+		return (ft_free_int(&tab), ft_error(), NULL);
 	return (tab);
 }
 
@@ -139,7 +139,7 @@ int	**get_int_arg(int argc, char **argv, int *count)
 	if (!stack)
 		return (ft_free_str(&str), NULL);
 	ft_free_str(&str);
-	int_stack = atoi_arg(stack, &count);
+	int_stack = atoi_arg(stack, count);
 	ft_free_tab_str(&stack);
 	if (!int_stack)
 		return (ft_free_tab_str(&stack), NULL);

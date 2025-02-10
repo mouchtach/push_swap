@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 17:41:40 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/10 17:05:35 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/10 21:06:26 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void	ft_free_int(int ***tab)
 {
 	int	i;
 
-	i = 0;
-	if (!tab || !(*tab))
+	if (!tab || !(*tab) || !(*tab)[0])
 		return ;
+	i = 0;
 	while ((*tab)[i])
 	{
 		free((*tab)[i]);

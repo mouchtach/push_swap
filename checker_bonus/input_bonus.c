@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 23:30:56 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/10 17:15:46 by ymouchta         ###   ########.fr       */
+/*   Created: 2025/02/09 17:38:52 by ymouchta          #+#    #+#             */
+/*   Updated: 2025/02/10 21:06:03 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap_bonus.h"
 
 static int	if_double_sort(int **tab)
 {
@@ -25,40 +25,47 @@ static int	if_double_sort(int **tab)
 		while (tab[j])
 		{
 			if (*tab[i] == *tab[j])
-				return (1);
+				return (ft_free_int(&tab), ft_error(), 1);
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	i = 0;
+	while (tab[i] && tab[i + 1])
+	{
+		if ((*tab[i] > *tab[i + 1]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
-static int	**atoi_arg(char **str, int **count)
+static int	**atoi_arg(char **str, int *count)
 {
-	int	i;
-	int	res;
-	int	**tab;
+	int		i;
+	long	res;
+	int		**tab;
 
 	i = 0;
-	res = 0;
-	tab = NULL;
-	while (str[**count])
-		**count += 1;
-	tab = (int **)malloc(sizeof(int *) * (**count + 1));
-	if (!tab) 
+	while (str[*count])
+		(*count)++;
+	tab = (int **)malloc(sizeof(int *) * (*count + 1));
+	if (!tab)
 		return (NULL);
-	while (i < **count) 
+	while (i < (*count))
 	{
 		tab[i] = malloc(sizeof(int));
 		if (!tab[i])
 			return (ft_free_int(&tab), NULL);
 		res = ft_atoi(str[i]);
-		if (res == 0 && *str[i] != '0')
-			return (ft_free_tab_str(&str), ft_free_int(&tab), ft_error(), NULL);
-		*tab[i] = res ;
+		if (res > 2147483647 || res < -2147483648)
+			break ;
+		*(tab[i]) = (int)res;
 		i++;
 	}
 	tab[i] = NULL;
+	if (res > 2147483647 || res < -2147483648)
+		return (ft_free_int(&tab), ft_error(), NULL);
 	return (tab);
 }
 
@@ -82,7 +89,13 @@ static int	check_error(char *str)
 		}
 		i++;
 	}
-	return (0);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i++] != ' ')
+			return (0);
+	}
+	return (1);
 }
 
 static char	*read_arg(int argc, char **argv)
@@ -96,10 +109,12 @@ static char	*read_arg(int argc, char **argv)
 	str = NULL;
 	if (argc == 1)
 		return (NULL);
+	if (argv[1][0] == '\0')
+		return (ft_error(), NULL);
 	while (argc > 1)
 	{
-		if (check_error(argv[i]) == 1)
-			ft_error();
+		if (check_error(argv[i]) == 1 || argv[i][0] == '\0')
+			return (ft_free_str(&str), ft_error(), NULL);
 		tmp = ft_strdup(str);
 		ft_free_str(&str);
 		str = ft_strjoin(tmp, argv[i]);
@@ -116,6 +131,7 @@ int	**get_int_arg(int argc, char **argv, int *count)
 	char	**stack;
 	int		**int_stack;
 
+	*count = 0;
 	str = read_arg(argc, argv);
 	if (!str)
 		return (NULL);
@@ -123,12 +139,12 @@ int	**get_int_arg(int argc, char **argv, int *count)
 	if (!stack)
 		return (ft_free_str(&str), NULL);
 	ft_free_str(&str);
-	int_stack = atoi_arg(stack, &count);
+	int_stack = atoi_arg(stack, count);
 	ft_free_tab_str(&stack);
 	if (!int_stack)
 		return (ft_free_tab_str(&stack), NULL);
 	if (if_double_sort(int_stack) == 1)
-		return (ft_free_tab_str(&stack), 
-			ft_free_str(&str), ft_free_int(&int_stack), NULL);
+		return (ft_free_int(&int_stack), NULL);
 	return (int_stack);
 }
+// i need condition to check if empty argv

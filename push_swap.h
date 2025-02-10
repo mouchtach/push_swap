@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 17:00:11 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/09 21:13:17 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/10 21:02:26 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	ft_sort(int **tab, int count);
 int		**ft_sort_int_tab(int **tab, int count);
 
 //libft
-int		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 char	**ft_split(char const *s, char c);
 char	*ft_strdup(const char *s1);
 char	*ft_strjoin(char const *s1, char const *s2);
