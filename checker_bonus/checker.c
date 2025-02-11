@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:27:01 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/11 10:27:03 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/11 12:15:58 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 static void	operation(t_list **stack_a, t_list **stack_b, char *line)
 {
-	if (!ft_strcmp(line, "rra"))
+	if (!ft_strcmp(line, "rra\n"))
 		rra(stack_a);
-	else if (!ft_strcmp(line, "rrb"))
+	else if (!ft_strcmp(line, "rrb\n"))
 		rrb(stack_a);
-	else if (!ft_strcmp(line, "rrr"))
+	else if (!ft_strcmp(line, "rrr\n"))
 		rrr(stack_a, stack_b);
-	else if (!ft_strcmp(line, "rr"))
+	else if (!ft_strcmp(line, "rr\n"))
 		rr(stack_a, stack_b);
-	else if (!ft_strcmp(line, "sa"))
+	else if (!ft_strcmp(line, "sa\n"))
 		sa(stack_a);
-	else if (!ft_strcmp(line, "sb"))
+	else if (!ft_strcmp(line, "sb\n"))
 		sb(stack_b);
-	else if (!ft_strcmp(line, "ss"))
+	else if (!ft_strcmp(line, "ss\n"))
 		ss(stack_a, stack_b);
-	else if (!ft_strcmp(line, "pa"))
+	else if (!ft_strcmp(line, "pa\n"))
 		pa(stack_a, stack_b);
-	else if (!ft_strcmp(line, "pb"))
+	else if (!ft_strcmp(line, "pb\n"))
 		pb(stack_a, stack_b);
-	else if (!ft_strcmp(line, "ra"))
+	else if (!ft_strcmp(line, "ra\n"))
 		ra(stack_a);
-	else if (!ft_strcmp(line, "rb"))
+	else if (!ft_strcmp(line, "rb\n"))
 		rb(stack_b);
 	else
 		return (ft_free_stack(stack_a), 
@@ -95,24 +95,3 @@ int	main(int argc, char **argv)
 		write(1, "KO\n", 3);
 	return (ft_free_stack(&stack_a), ft_free_stack(&stack_b), 0);
 }
-
-// void	printStack(t_list* stack_a, t_list* stack_b) 
-// {
-// 	printf("Stack A  |  Stack B\n");
-// 	printf("---------------------\n");
-
-// 	while (stack_a || stack_b) {
-// 		if (stack_a)
-// 			printf("   %d    |", stack_a->data);
-// 		else
-// 			printf("        |");
-
-// 		if (stack_b)
-// 			printf("    %d", stack_b->data);
-
-// 		printf("\n");
-
-// 		if (stack_a) stack_a = stack_a->next;
-// 		if (stack_b) stack_b = stack_b->next;
-// 	}
-// }

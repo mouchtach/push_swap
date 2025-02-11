@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:27:18 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/11 10:27:20 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/11 12:08:24 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ static void	ft_cpy(char **dst, char **src)
 			(*dst)[i] = (*src)[i];
 			i++;
 		}
+		if ((*src)[i] == '\n')
+		{
+			(*dst)[i] = '\n';
+			i++;
+		}
 		(*dst)[i] = '\0';
 	}
 }
@@ -48,6 +53,8 @@ static char	*extra_line(char **line)
 	if (!line && !*line)
 		return (NULL);
 	while ((*line)[i] && (*line)[i] != '\n')
+		i++;
+	if ((*line)[i] == '\n')
 		i++;
 	dst = malloc(i + 1);
 	if (!dst)
