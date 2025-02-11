@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:30:57 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/11 10:30:59 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:03:11 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,17 @@ void	ft_free_int(int ***tab)
 {
 	int	i;
 
+	if (!tab || !*tab)
+		return ;
 	i = 0;
-	if (*tab)
+	while ((*tab)[i])
 	{
-		while ((*tab)[i])
-		{
-			free((*tab)[i]); 
-			(*tab)[i] = NULL;
-			i++;
-		}
-		free(*tab); 
-		*tab = NULL;
+		free((*tab)[i]);
+		(*tab)[i] = NULL;
+		i++;
 	}
+	free(*tab);
+	*tab = NULL;
 }
 
 void	ft_free_stack(t_list **lst)
