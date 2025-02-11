@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 17:41:40 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/10 21:06:26 by ymouchta         ###   ########.fr       */
+/*   Created: 2025/02/11 10:30:57 by ymouchta          #+#    #+#             */
+/*   Updated: 2025/02/11 10:30:59 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,22 @@ void	ft_free_tab_str(char ***str)
 	*str = NULL;
 }
 
-void ft_free_int(int ***tab)
+void	ft_free_int(int ***tab)
 {
-	int i;
+	int	i;
 
 	i = 0;
-    if (*tab)
-    {
-        while((*tab)[i])
-        {
-            free((*tab)[i]); 
-            (*tab)[i] = NULL;
+	if (*tab)
+	{
+		while ((*tab)[i])
+		{
+			free((*tab)[i]); 
+			(*tab)[i] = NULL;
 			i++;
-        }
-        free(*tab); 
-        *tab = NULL;
-    }
+		}
+		free(*tab); 
+		*tab = NULL;
+	}
 }
 
 void	ft_free_stack(t_list **lst)
