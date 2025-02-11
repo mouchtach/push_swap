@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:31:56 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/11 10:31:57 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/11 16:15:07 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 # define PUSH_SWAP_H
 
 # include <fcntl.h>
-# include <limits.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
 
 typedef struct s_list
 {
