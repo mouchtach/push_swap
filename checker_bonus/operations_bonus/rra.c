@@ -26,10 +26,11 @@ void	rra(t_list **lst)
 	tmp->next = NULL;
 	tmp2->next = *lst;
 	*lst = tmp2;
+
 }
 
 void	rrr(t_list **stack_a, t_list **stack_b)
 {
 	rra(stack_a);
-	rra(stack_b);
+	rrb(stack_b);
 }
