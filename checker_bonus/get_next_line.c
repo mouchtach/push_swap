@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:27:18 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/11 12:08:24 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/11 13:43:24 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ static char	*extra_line(char **line)
 		return (NULL);
 	ft_cpy(&dst, line);
 	temp = ft_strdup_get((*line) + i);
-	if (!temp)
-		return (ft_free(line), ft_free(&dst));
 	ft_free(line);
 	*line = temp;
 	return (dst);
