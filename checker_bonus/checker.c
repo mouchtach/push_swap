@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:27:01 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/11 12:15:58 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/11 16:08:39 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	operation(t_list **stack_a, t_list **stack_b, char *line)
 	if (!ft_strcmp(line, "rra\n"))
 		rra(stack_a);
 	else if (!ft_strcmp(line, "rrb\n"))
-		rrb(stack_a);
+		rrb(stack_b);
 	else if (!ft_strcmp(line, "rrr\n"))
 		rrr(stack_a, stack_b);
 	else if (!ft_strcmp(line, "rr\n"))
