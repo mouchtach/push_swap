@@ -22,10 +22,10 @@ char	*ft_strjoin_get(char const *s1, char const *s2)
 	i = 0;
 	j = 0;
 	if (!s1)
-		return (ft_strdup(s2));
+		return (ft_strdup_get(s2));
 	if (!s2)
-		return (ft_strdup(s1));
-	len = ft_strlen(s1) + ft_strlen(s2);
+		return (ft_strdup_get(s1));
+	len = ft_strlen_get(s1) + ft_strlen_get(s2);
 	p = malloc(len + 1);
 	if (!p)
 		return (NULL);
@@ -43,7 +43,7 @@ char	*ft_strdup_get(const char *s)
 	size_t	i;
 	char	*p;
 
-	if (!s)
+	if (!s || !*s)
 		return (NULL);
 	i = 0;
 	p = (char *)malloc(ft_strlen(s) + 1);
