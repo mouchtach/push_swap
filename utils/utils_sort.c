@@ -6,7 +6,7 @@
 /*   By: ymouchta <ymouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:31:35 by ymouchta          #+#    #+#             */
-/*   Updated: 2025/02/11 10:31:37 by ymouchta         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:50:08 by ymouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ void	finish_sort(t_list **stack_a, t_list **stack_b)
 	ft_free_stack(stack_a);
 }
 
-void	ft_push_if_range(t_list **stack_a, t_list **stack_b, int big, int count)
+void	ft_push_if_range(t_list **stack_a, t_list **stack_b, int count)
 {
 	int	small;
+	int big =(count * 0.048) + 10;
 
 	small = 0;
 	while (count-- > 0)
@@ -57,13 +58,6 @@ void	ft_push_if_range(t_list **stack_a, t_list **stack_b, int big, int count)
 	}
 }
 
-void	ft_push_if(t_list **stack_a, t_list **stack_b, int count)
-{
-	if (count <= 100)
-		ft_push_if_range(stack_a, stack_b, 15, count);
-	else 
-		ft_push_if_range(stack_a, stack_b, 30, count);
-}
 
 void	ft_sort(int **tab, int count)
 {
